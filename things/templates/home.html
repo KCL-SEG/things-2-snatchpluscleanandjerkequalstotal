@@ -1,10 +1,13 @@
 <!-- things/templates/home.html -->
 
+{% extends 'base_generic.html' %}
+
 {% block content %}
   <h1>Things</h1>
   <form method="post" action="{% url 'home' %}">
     {% csrf_token %}
     {{ form.as_p }}
+    <textarea name="{{ form.description.name }}" maxlength="120">{{ form.description.value }}</textarea>
     <button type="submit">Submit</button>
   </form>
 {% endblock %}
